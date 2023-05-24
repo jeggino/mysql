@@ -14,7 +14,7 @@ def get_connection():
     fast_executemany = True
     )
 
-q1 = 'SELECT * FROM ebird.df'
+q1 = 'SELECT * FROM df'
 
 @st.cache
 def read_df1():
@@ -22,4 +22,4 @@ def read_df1():
   return df1
   
 
-st.dataframe(read_df1())
+read_df1()
