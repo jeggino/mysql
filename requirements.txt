@@ -1,4 +1,4 @@
 streamlit 
-SQLAlchemy mysqlclient
+pip install SQLAlchemy mysqlclient
 time
 pandas 
