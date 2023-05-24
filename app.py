@@ -5,7 +5,11 @@ import sqlalchemy
 import pyodbc
 import pymysql
 
+#creating connection
 
+engine = sqlalchemy.create_engine(
+    "mssql+pyodbc://username:passowrd@DB_server/database?driver=ODBC+Driver+17+for+SQL+Server", 
+    )
 
 @st.cache(allow_output_mutation=True)
 def get_connection():
@@ -18,7 +22,7 @@ q1 = 'SELECT * FROM ebird.df'
 
 @st.cache
 def read_df1():
-  df1 = pd.read_sql_query(q1, get_connection())
+  df1 = pd.read_sql_query(q1, engine)
   return df1
   
 
