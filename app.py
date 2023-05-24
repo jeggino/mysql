@@ -14,7 +14,7 @@ engine = sqlalchemy.create_engine(
 
 @st.cache(allow_output_mutation=True)
 def get_connection():
-    return create_engine("mssql+pyodbc://username:passowrd@DB_server/database?driver=ODBC+Driver+17+for+SQL+Server", 
+    return sqlalchemy.create_engine("mssql+pyodbc://username:passowrd@DB_server/database?driver=ODBC+Driver+17+for+SQL+Server", 
     fast_executemany = True
     )
   
