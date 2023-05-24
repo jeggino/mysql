@@ -3,7 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import pymysql
 
-SQL_script = st.text_area(label='SQL Input', value='SELECT * FROM df')
+SQL_script = st.text_area(label='SQL Input', value='SELECT * FROM df;')
 
 @st.cache(allow_output_mutation=True)
 def get_connection():
