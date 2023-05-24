@@ -8,13 +8,8 @@ import pymysql
 
 
 
-@st.cache()
-def get_connection():
-    return sqlalchemy.create_engine("mssql+pyodbc://username:passowrd@DB_server/database?driver=ODBC+Driver+17+for+SQL+Server")
+con  = sqlalchemy.create_engine("mssql+pyodbc://username:passowrd@DB_server/database?driver=ODBC+Driver+17+for+SQL+Server")
   
-q1 = 'SELECT * FROM df'
-
-df = pd.read_sql(q1, get_connection())
-
+df = pd.read_sql( 'SELECT * FROM df', con=con)
 
 st.dataframe(df)
