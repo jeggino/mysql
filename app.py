@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
-import time
 
 SQL_script = st.text_area(label='SQL Input', value='SELECT * FROM df')
 
@@ -15,7 +14,6 @@ def get_connection():
 @st.cache
 def load_data(SQL_script):
     with st.spinner('Loading Data...'):
-        time.sleep(0.5)
         df = pd.read_sql_query(SQL_script, get_connection())
     return df
 
