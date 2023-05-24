@@ -25,4 +25,4 @@ def read_df1():
   df1 = pd.read_sql_query(q1, get_connection())
   return df1
 
-st.write(read_df1)
+st.dataframe(read_df1)
