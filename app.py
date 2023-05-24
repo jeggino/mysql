@@ -8,7 +8,7 @@ import pymysql
 
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache()
 def get_connection():
     return sqlalchemy.create_engine("mssql+pyodbc://username:passowrd@DB_server/database?driver=ODBC+Driver+17+for+SQL+Server")
   
