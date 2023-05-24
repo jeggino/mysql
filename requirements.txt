@@ -1,5 +1,5 @@
 streamlit 
-toml
-sqlalchemy==1.4
 
+sqlalchemy==1.4
+pymysql
 pandas 
