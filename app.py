@@ -7,10 +7,7 @@ SQL_script = st.text_area(label='SQL Input', value='SELECT * FROM df')
 
 @st.cache(allow_output_mutation=True)
 def get_connection():
-    return create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
-                       .format(user="root",
-                               pw="Platinum79",
-                               db="ebird"))
+    return create_engine("mysql+pymysql://root:Platinum79@localhost/ebird")
 
 @st.cache
 def load_data(SQL_script):
