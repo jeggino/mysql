@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from sqlalchemy 
+import sqlalchemy 
 from sklearn.neighbors import NearestNeighbors
 import pyodbc
 import pymysql
