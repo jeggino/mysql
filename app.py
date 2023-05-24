@@ -1,9 +1,9 @@
-import mysql.connector
+sqlalchemy import create_engine
 import streamlit as st
 
 # Establish a connection to MySQL Server
 
-mydb = mysql.connector.connect(
+mydb =create_engine.connect(
     host="localhost",
     user="root",
     password="Platinum79",
