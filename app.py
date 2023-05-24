@@ -1,5 +1,11 @@
+# streamlit_app.py
+
 import streamlit as st
 
-conn = st.experimental_connection("mydb", type="sql", autocommit=True)
-df = conn.query("select * from df")
+# Initialize connection.
+conn = st.experimental_connection('mysql', type='sql')
+
+# Perform query.
+df = conn.query('SELECT * from df;', ttl=600)
+
 st.dataframe(df)
