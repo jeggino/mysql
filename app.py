@@ -14,8 +14,7 @@ def get_connection():
 
 @st.cache
 def load_data(SQL_script):
-    with st.spinner('Loading Data...'):
-        df = pd.read_sql_query(SQL_script, get_connection())
+    df = pd.read_sql_query(SQL_script, get_connection())
     return df
 
 raw_data = load_data(SQL_script)
