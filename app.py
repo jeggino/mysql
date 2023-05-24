@@ -20,7 +20,7 @@ def get_connection():
   
 q1 = 'SELECT * FROM df'
 
-df = pd.read_sql_query(q1, get_connection())
+df = pd.read_sql(q1, get_connection())
 
 
 st.dataframe(df)
