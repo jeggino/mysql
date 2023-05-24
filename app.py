@@ -18,7 +18,7 @@ def get_connection():
 
 @st.cache
 def read_df1():
-  df1 = pd.read_sql_query("SELECT * FRAM table", get_connection())
+  df1 = pd.read_sql_query("SELECT * FROM dfd", get_connection())
   return df1
   
 
