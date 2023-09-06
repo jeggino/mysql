@@ -8,6 +8,6 @@ SQL_script = st.text_area(label='SQL Input', value='SELECT * FROM df;')
 import streamlit as st
 
 conn = st.experimental_connection("sql")
-df = conn.query("select * from pet_owners")
+df = conn.query("select * from e_bird")
 st.dataframe(df)
 
