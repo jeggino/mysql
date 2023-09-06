@@ -5,15 +5,9 @@ import pymysql
 
 SQL_script = st.text_area(label='SQL Input', value='SELECT * FROM df;')
 
-@st.cache(allow_output_mutation=True)
-def get_connection():
-    return create_engine("mysql+pymysql://root:Platinum79@localhost/ebird")
+import streamlit as st
 
-@st.cache
-def load_data(SQL_script):
-    df = pd.read_sql_query(SQL_script, get_connection())
-    return df
-
-raw_data = load_data(SQL_script)
-raw_data
+conn = st.experimental_connection("sql")
+df = conn.query("select * from pet_owners")
+st.dataframe(df)
 
