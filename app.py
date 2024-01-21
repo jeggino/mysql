@@ -1,9 +1,9 @@
 import streamlit as st
 
+# Initialize connection.
+conn = st.connection('mysql', type='sql')
 
-import streamlit as st
-
-conn = st.experimental_connection("sql")
-df = conn.query("select * from df")
+# Perform query.
+df = conn.query('SELECT * from df;')
 st.dataframe(df)
 
