@@ -18,10 +18,10 @@ db = mysql.connector.connect(**config)
 cursor = db.cursor()
 
 # Select the database
-cursor.execute("USE userdb")
+cursor.execute("USE ebird")
 
 # Fetch all patients
-select_patients_query = "SELECT * FROM patients"
+select_patients_query = "SELECT * FROM df"
 cursor.execute(select_patients_query)
 patients = cursor.fetchall()
 
