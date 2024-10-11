@@ -9,6 +9,6 @@ df = conn.read(
     ttl=0,
 )
 
-df
+st.dataframe(df)
 
 
