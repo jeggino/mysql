@@ -1,12 +1,6 @@
 import streamlit as st
-import pandas as pd
-from sqlalchemy import create_engine
 
+st.title('🎈 App Name')
 
-engine = create_engine("mysql+pymysql://root:Platinum79@localhost/ebird")
-
-query = "SELECT * FROM df"
-
-df = pd.read_sql(query, engine)
-
-df
+st.write('Hello world!!!!')
+conn = st.connection("postgresql", type="sql")
