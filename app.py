@@ -15,4 +15,4 @@ sheet_data = [
             {'Timestamp': "d", 'User_Input': "d", 'User_Output': "ddd"]}
 ]
 
-conn.update(worksheet="My_Sheet", data=df_observations)
+conn.update(worksheet="df_observations", data=sheet_data)
