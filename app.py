@@ -11,3 +11,8 @@ df = conn.read(
     nrows=3,
 )
 
+sheet_data = [
+            {'Timestamp': "d", 'User_Input': "d", 'User_Output': "ddd"]}
+]
+
+conn.update(worksheet="My_Sheet", data=df_observations)
