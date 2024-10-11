@@ -7,9 +7,11 @@ import pandas as pd
 config = {
     'user': 'root',
     'password': 'Platinum79',
+    'host' : "localhost"
     'port': 3306,  
     'database':'ebird'
 }
+
 
 db = mysql.connector.connect(**config)
 """Fetch all records from the 'patients' table."""
