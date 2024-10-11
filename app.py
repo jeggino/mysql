@@ -1,11 +1,9 @@
 import streamlit as st
+from streamlit_gsheets import GSheetsConnection
 
-# Initialize connection.
-conn = st.connection("postgresql", type="sql")
+# Create a connection object.
+conn = st.connection("gsheets", type=GSheetsConnection)
 
-# Perform query.
-df = conn.query('SELECT * FROM mytable;', ttl="10m")
+df = conn.read()
 
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.name} has a :{row.pet}:")
+df
