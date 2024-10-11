@@ -1,9 +1,11 @@
 import streamlit as st
+from streamlit_gsheets import GSheetsConnection
 
-# Initialize connection.
-conn = st.connection('mysql', type='sql')
+# Create a connection object.
+conn = st.connection("gsheets", type=GSheetsConnection)
 
-# Perform query.
-df = conn.query('SELECT * from df;', ttl=600)
-
-st.dataframe(df)
+df = conn.read(
+    worksheet="Sheet",
+    ttl="10m",
+    nrows=3,
+)
