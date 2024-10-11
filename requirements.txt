@@ -1,3 +1,4 @@
 streamlit
 pandas
 mysql.connector
+mysqlclient==2.2.4
