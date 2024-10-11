@@ -1,9 +1,9 @@
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
 
-st.title("Read Google Sheet as DataFrame")
+# Initialize connection.
+conn = st.connection('mysql', type='sql')
 
-conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read(worksheet="Example 1")
+# Perform query.
+df = conn.query('SELECT * from df;', ttl=600)
 
 st.dataframe(df)
