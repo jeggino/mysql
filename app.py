@@ -1,14 +1,13 @@
 import streamlit as st
 import mysql.connector
 import pandas as pd
-import requests
-from streamlit_lottie import st_lottie
+
 
 
 config = {
     'user': 'root',
     'password': 'Platinum79',
-    'host': 'localhost',
+    'host': 'root',
     'port': 3306,  
     'database':'ebird'
 }
