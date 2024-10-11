@@ -7,7 +7,7 @@ import pandas as pd
 config = {
     'user': 'root',
     'password': 'Platinum79',
-    'host' : "localhost"
+    'host' : "localhost",
     'port': 3306,  
     'database':'ebird'
 }
