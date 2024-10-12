@@ -3,8 +3,10 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-old_data = conn.read(ttl=0,worksheet="Appointments")
-old_data
+df_1 = conn.read(ttl=0,worksheet="Appointments")
+df_2 = conn.read(ttl=0,worksheet="Sheet4")
+df_1
+df_2
 #--- NEW ---
 buurt_choice = ['Bijlmer-West', 'Bijlmer-Centrum', 'Bijlmer-Oost', 'Bos en Lommer',
        'Oud-Zuid', 'Osdorp', 'Indische Buurt, Oostelijk Havengebied',
