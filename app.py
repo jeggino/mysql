@@ -39,7 +39,7 @@ new_data = pd.DataFrame([{
 
 updated_df = pd.concat([old_data,new_data],ignore_index=True)
 
-conn.update(worksheet=st.secrets["spreadsheet"], data=updated_df)
+conn.update(spreadsheet=st.secrets["spreadsheet"],worksheet='Fietsklienik', data=updated_df)
 
 
 
