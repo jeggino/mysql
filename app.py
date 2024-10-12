@@ -48,7 +48,7 @@ updated_df
 
 submitted = st.button(":red[**Gegevens opslaan**]")
 if submitted:
-       conn.update(spreadsheet=st.secrets["spreadsheet"], data=data)
+       conn.update()
        st.write("YOU DID!!")
 
 
