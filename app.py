@@ -37,13 +37,18 @@ new_data = pd.DataFrame([{
                    "Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike,
 }])
 
+data = [{
+                   "Name": name, "e_mail": e_mail, "Phone number": number,
+                   "Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike,
+}]
+
 updated_df = pd.concat([old_data,new_data],ignore_index=True)
 
 updated_df
 
 submitted = st.button(":red[**Gegevens opslaan**]")
 if submitted:
-       conn.update(spreadsheet=st.secrets["spreadsheet"], data=updated_df)
+       conn.update(spreadsheet=st.secrets["spreadsheet"], data=data)
        st.write("YOU DID!!")
 
 
