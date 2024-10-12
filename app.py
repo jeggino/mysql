@@ -7,4 +7,3 @@ from streamlit_gsheets import GSheetsConnection
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 data = conn.read(spreadsheet=st.secrets["spreadsheet"],ttl=0)
-data[data['project']=='Badhoevedorp']
