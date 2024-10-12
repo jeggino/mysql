@@ -5,9 +5,9 @@ import pandas as pd
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_1 = conn.read(ttl=0,worksheet="Appointments")
+df_old = conn.read(ttl=0,worksheet="Appointments")
 
-df_1
+df_old
 
 
 #--- NEW ---
@@ -36,7 +36,10 @@ expertise = st.selectbox("Welke ervaring heeft u met fietsen?", expertise_choice
 type_bike = st.selectbox("Wat voor fiets wilt u repareren?", type_bikes)
 
 data = [{"Name": name, "e_mail": e_mail, "Phone number": number,"Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike}]
+df_new = pd.DataFrame(data)
 
-if st.button(":red[**update onw entry**]"):
-       conn.update(worksheet='Appointments',data=data)
+if st.button(":red[**Update**]"):
+       df_updated = pd.concat([df_old,df_new],igrore_index=True)
+       conn.update(worksheet='Appointments',data=df_updated)
        st.write("YOU update!!")
+       st.rerun()
