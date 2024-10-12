@@ -41,7 +41,10 @@ updated_df = pd.concat([old_data,new_data],ignore_index=True)
 
 updated_df
 
-conn.update(spreadsheet=st.secrets["spreadsheet"], data=updated_df)
+submitted = st.button(":red[**Gegevens opslaan**]")
+if submitted:
+       conn.update(spreadsheet=st.secrets["spreadsheet"], data=updated_df)
+       st.write("YOU DID!!")
 
 
 
