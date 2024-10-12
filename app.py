@@ -40,15 +40,12 @@ data = [{
                    "Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike,
 }]
 
-updated_df = pd.concat([old_data,new_data],ignore_index=True)
 
-updated_df
+if st.button(":red[**Create**]"):
+       conn.create(worksheet="new",data=new_data)
+       st.write("YOU create!!")
 
-submitted = st.button(":red[**Gegevens opslaan**]")
-if submitted:
-       conn.update(data=data)
-       st.write("YOU DID!!")
-
-
-
-
+if st.button(":red[**update**]"):
+       updated_df = pd.concat([df_1,new_data],ignore_index=True)
+       conn.update(data=updated_df)
+       st.write("YOU update!!")
