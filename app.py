@@ -32,10 +32,10 @@ buurt = st.selectbox("Uit welke buurt komt u? (voor statistieken doeleinden)", b
 expertise = st.selectbox("Welke ervaring heeft u met fietsen?", expertise_choice )
 type_bike = st.selectbox("Wat voor fiets wilt u repareren?", type_bikes)
 
-new_data = pd.Dataframe([{
+new_data = pd.Dataframe({
                    "Name": name, "e_mail": e_mail, "Phone number": number,
                    "Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike,
-}])
+})
 
 updated_df = pd.concat([old_data,new_data],ignore_index=True)
 
