@@ -39,7 +39,7 @@ data = [{"Name": name, "e_mail": e_mail, "Phone number": number,"Neighborhood": 
 df_new = pd.DataFrame(data)
 
 if st.button(":red[**Update**]"):
-       df_updated = pd.concat([df_old,df_new],igrore_index=True)
+       df_updated = pd.concat([df_old,df_new],ignore_index=True)
        conn.update(worksheet='Appointments',data=df_updated)
        st.write("YOU update!!")
        st.rerun()
