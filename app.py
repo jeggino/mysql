@@ -44,7 +44,7 @@ updated_df
 
 submitted = st.button(":red[**Gegevens opslaan**]")
 if submitted:
-       conn.update()
+       conn.update(data=data)
        st.write("YOU DID!!")
 
 
