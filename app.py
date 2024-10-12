@@ -49,3 +49,7 @@ if st.button(":red[**update**]"):
        updated_df = pd.concat([df_1,new_data],ignore_index=True)
        conn.update(data=updated_df)
        st.write("YOU update!!")
+
+if st.button(":red[**update onw entry**]"):
+       conn.update(data=data)
+       st.write("YOU update!!")
