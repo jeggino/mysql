@@ -4,7 +4,7 @@ import pandas as pd
 
 spreadsheet = "https://docs.google.com/spreadsheets/d/1mkF1s_hsoX7GfCdbb_RtaxssqYfLO-kpsJncbqc5Wpw/edit?usp=sharing"
 conn = st.connection("gsheets", type=GSheetsConnection)
-old_data = conn.read(spreadsheet=,ttl=0,worksheet="2087096308")
+old_data = conn.read(spreadsheet=spreadsheet,ttl=0,worksheet="2087096308")
 old_data
 #--- NEW ---
 buurt_choice = ['Bijlmer-West', 'Bijlmer-Centrum', 'Bijlmer-Oost', 'Bos en Lommer',
