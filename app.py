@@ -38,5 +38,5 @@ type_bike = st.selectbox("Wat voor fiets wilt u repareren?", type_bikes)
 data = [{"Name": name, "e_mail": e_mail, "Phone number": number,"Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike}]
 
 if st.button(":red[**update onw entry**]"):
-       conn.update(data=data)
+       conn.update(worksheet='Appointments',data=data)
        st.write("YOU update!!")
