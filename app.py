@@ -12,7 +12,7 @@ df_old = conn.read(ttl=0,worksheet="Data")
 
 
 # --- FUNCTIONS ---
-def insert_period(membership,date, day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number = None, ):
+def insert_period(membership,date, day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number = None):
     """Returns the user on a successful user creation, otherwise raises and error"""
     data = [{"Membership":membership, "Membership_number":membership_number, "Date": date, "Day":day, "Week":week, "Time shift": time_shift, 
     "Name": name, "e_mail": e_mail, "Phone number": number,
@@ -22,7 +22,7 @@ def insert_period(membership,date, day, week, time_shift, name, e_mail, number, 
     df_new = pd.DataFrame(data)
     df_updated = pd.concat([df_old,df_new],ignore_index=True)
     
-    return df_updated
+    return conn.update(worksheet="Data",data=df_updated)
     
 #_________vakantie_______
 def fun(dict_, date):
@@ -317,7 +317,7 @@ if not on:
                 else:
                     day = parser.parse(str(date)).strftime("%A")
                     try:
-                        int(number)
+                        # int(number)
                         if day in ["Thursday","Tuesday"]:
         
                             if time_shift=="18:00-20:30" and len_1 >= 3:
