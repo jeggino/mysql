@@ -41,9 +41,9 @@ def fun(dict_, date):
 # main_body_logo = st.selectbox("Main body logo", options, 1)
 
 # --- SETTINGS ---
-page_title = None
-page_icon = " :bike: "  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-layout = "centered"
+# page_title = None
+# page_icon = " :bike: "  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+# layout = "centered"
 
 # --- HERE THE CHANGE WITH THE SHIFT, 14-16 HAS BEEN DELETED ---
 time_shift_choice_dinsdag_donderdag = ["18:00-20:30"]
@@ -198,7 +198,7 @@ Welcome to the Cycling Clinic and enjoy your cycling session!
 
 
 
-st.set_page_config(page_title=page_title, page_icon=page_icon, layout=layout)
+# st.set_page_config(page_title=page_title, page_icon=page_icon, layout=layout)
 
 
 # --- HIDE STREAMLIT STYLE ---
