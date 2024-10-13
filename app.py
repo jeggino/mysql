@@ -395,7 +395,7 @@ if not on:
 
             submitted = st.form_submit_button("Afspraak annuleren")
             if submitted:
-                df = df_old
+                df = conn.read(ttl=0,worksheet="Data")
                 df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
                 if e_mail:
                     if len(df_filter) > 0:
