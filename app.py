@@ -392,16 +392,14 @@ if not on:
             
             "---"
             
-            df = df_old
-            df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
+
             submitted = st.form_submit_button("Afspraak annuleren")
             if submitted:
+                df = df_old
+                df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
                 if e_mail:
                     if len(df_filter) > 0:
-
-                        df_drop = df_old[df_old['e_mail']!=e_mail]
-
-
+                        df_drop = df[(df["Date"]!=date) & (df["Time shift"]!=time_shift) & (df.e_mail!=e_mail)]
                         conn.update(worksheet='Data',data=df_drop)
                         st.success("Uw afspraak is geannuleerd!")
                         st.rerun()
