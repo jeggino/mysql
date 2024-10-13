@@ -42,7 +42,7 @@ if st.button(":red[**Update df**]"):
        st.rerun()
 
 if st.button(":red[**drop**]"):
-       name = st.text_input("Naam*", placeholder="Vul hier uw naam in ...")
+       name = st.text_input("Naam*", placeholder="Vul hier uw naam in ...",key="name drop")
        
        try:
               df_drop = df_old[df_old['Name']!=name]
