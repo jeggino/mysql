@@ -290,12 +290,20 @@ if not on:
         # submit the data
         submitted = st.button(":red[**Gegevens opslaan**]")
         if submitted:
-            df = df_old
-            df_filter = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift)]
-            df_control = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift) & (df["Name"]==name)]
-            len_1 = len(df_filter)
-            len_control = len(df_control)
-    
+            try:
+                df = df_old
+                df_filter = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift)]
+                df_control = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift) & (df["Name"]==name)]
+                len_1 = len(df_filter)
+                len_control = len(df_control)
+                
+            except:
+                df = df_old
+                df_filter = df
+                df_control = df[
+                len_1 = 0
+                len_control = 0
+                   
             if len(name) == 0 or len(e_mail)==0 or len(number)==0:
                 st.warning('Vul de verplichte velden in', icon="⚠️")
                 st.stop()
