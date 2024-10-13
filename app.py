@@ -5,7 +5,7 @@ import pandas as pd
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_old = conn.read(ttl=0,worksheet="Appointments")
+df_old = conn.read(ttl=0,worksheet="old_data")
 
 df_old
 
@@ -39,8 +39,8 @@ data = [{"Name": name, "e_mail": e_mail, "Phone number": number,"Neighborhood": 
 df_new = pd.DataFrame(data)
 
 if st.button(":red[**Update df**]"):
-       conn.clear(worksheet='Old data')
-       conn.create(worksheet='Old data',data=df_old)
+       conn.clear(worksheet='old_data')
+       conn.create(worksheet='old_data',data=df_old)
        df_updated = pd.concat([df_old,df_new],ignore_index=True)
-       conn.update(worksheet='Appointments',data=df_updated)
+       conn.update(worksheet='new_data',data=df_updated)
        st.rerun()
