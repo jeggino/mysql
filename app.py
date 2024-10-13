@@ -286,9 +286,7 @@ if not on:
         
         "---"
     
-        # find if there are available shift in that data
-)       
-    
+        # find if there are available shift in that data      
         # submit the data
         submitted = st.button(":red[**Gegevens opslaan**]")
         if submitted:
@@ -296,7 +294,7 @@ if not on:
             df_filter = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift)]
             df_control = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift) & (df["Name"]==name)]
             len_1 = len(df_filter)
-            len_control = len(df_control
+            len_control = len(df_control)
     
             if len(name) == 0 or len(e_mail)==0 or len(number)==0:
                 st.warning('Vul de verplichte velden in', icon="⚠️")
