@@ -39,5 +39,4 @@ if st.button(":red[**Update df**]"):
        df_new = pd.DataFrame(data)
        df_updated = pd.concat([df_old,df_new],ignore_index=True)
        conn.update(worksheet='Data',data=df_updated)
-       conn.update(worksheet='Data_Old',data=df_old)
        st.rerun()
