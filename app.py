@@ -2,7 +2,6 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 from streamlit_option_menu import option_menu  
-from dateutil import parser
 from datetime import datetime as dt
 import random
 
