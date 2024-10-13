@@ -399,6 +399,7 @@ if not on:
                 df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
                 df_drop = df[(df["Date"]!=date) & (df["Time shift"]!=time_shift) & (df.e_mail!=e_mail)]
                 df_filter
+                df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
                 df_drop
                 # if e_mail:
                 #     if len(df_filter) > 0:
