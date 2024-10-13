@@ -30,17 +30,14 @@ type_bikes = ["Terugtraprem", "Racefiets","Versnellingen buiten","VersnellingenÂ
 
 name = st.text_input("Naam*", placeholder="Vul hier uw naam in ...")
 e_mail = st.text_input("E-mail*", placeholder="Voer hier uw e-mailadres in ...")
-number = st.text_input("Telefoonnummer*", placeholder="Voer hier uw nummer in ...")
-buurt = st.selectbox("Uit welke buurt komt u? (voor statistieken doeleinden)", buurt_choice)
-expertise = st.selectbox("Welke ervaring heeft u met fietsen?", expertise_choice )
-type_bike = st.selectbox("Wat voor fiets wilt u repareren?", type_bikes)
 
-data = [{"Name": name, "e_mail": e_mail, "Phone number": number,"Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike}]
-df_new = pd.DataFrame(data)
+
+
 
 if st.button(":red[**Update df**]"):
-       # conn.clear(worksheet='old_data')
-       conn.update(worksheet='old_data',data=df_old )
+       data = [{"Name": name, "e_mail": e_mail}]
+       df_new = pd.DataFrame(data)
+       # conn.update(worksheet='old_data',data=df_old )
        df_updated = pd.concat([df_old,df_new],ignore_index=True)
        conn.update(worksheet='new_data',data=df_updated)
        st.rerun()
