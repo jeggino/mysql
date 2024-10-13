@@ -44,5 +44,5 @@ if st.button(":red[**Update df**]"):
        st.rerun()
 
 if st.button(":red[**Update row**]"):
-       conn.update(worksheet='Appointments',data=data)
+       conn.update(worksheet='Appointments',data=df_new)
        st.rerun()
