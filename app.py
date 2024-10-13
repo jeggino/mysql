@@ -398,10 +398,8 @@ if not on:
                 df = conn.read(ttl=0,worksheet="Data")
                 df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
                 df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-                df_drop
                 if e_mail:
                     if len(df_filter) > 0:
-                        df_drop = df[(df["Date"]!=date) & (df["Time shift"]!=time_shift) & (df.e_mail!=e_mail)]
                         conn.update(worksheet='Data',data=df_drop)
                         st.success("Uw afspraak is geannuleerd!")
                         st.rerun()
