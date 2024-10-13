@@ -13,13 +13,14 @@ df_old = conn.read(ttl=0,worksheet="Data")
 # --- FUNCTIONS ---
 def insert_period(membership,date, day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number = None, ):
     """Returns the user on a successful user creation, otherwise raises and error"""
-       data = [{"Membership":membership, "Membership_number":membership_number, "Date": date, "Day":day, "Week":week, "Time shift": time_shift, 
-                   "Name": name, "e_mail": e_mail, "Phone number": number,
-                   "Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike,
-                   "Type of reparation":materiaal, "Remarks":opmerking
-                  }]
-       df_new = pd.DataFrame(data)
-       df_updated = pd.concat([df_old,df_new],ignore_index=True)
+    data = [{"Membership":membership, "Membership_number":membership_number, "Date": date, "Day":day, "Week":week, "Time shift": time_shift, 
+    "Name": name, "e_mail": e_mail, "Phone number": number,
+    "Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike,
+    "Type of reparation":materiaal, "Remarks":opmerking
+    }]
+    df_new = pd.DataFrame(data)
+    df_updated = pd.concat([df_old,df_new],ignore_index=True)
+    
     return df_updated
     
 #_________vakantie_______
