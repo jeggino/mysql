@@ -43,9 +43,11 @@ if st.button(":red[**Update df**]"):
 
 if st.button(":red[**drop**]"):
        name = st.text_input("Naam*", placeholder="Vul hier uw naam in ...",key="name drop")
-       
+       df_drop = df_old[df_old['Name']!=name]
+       st.stop()
        try:
               df_drop = df_old[df_old['Name']!=name]
+              
               conn.update(worksheet='Data',data=df_drop)
               st.rerun()
        except:
