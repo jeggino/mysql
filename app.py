@@ -5,7 +5,7 @@ import pandas as pd
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_old = conn.read(ttl=0,worksheet="old_data")
+df_old = conn.read(ttl=100,worksheet="old_data")
 
 df_old
 
