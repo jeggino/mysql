@@ -5,7 +5,7 @@ import pandas as pd
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_old = conn.read(ttl=0,worksheet="old_data")
+df_old = conn.read(ttl=0,worksheet="Data")
 
 df_old
 
@@ -37,7 +37,6 @@ e_mail = st.text_input("E-mail*", placeholder="Voer hier uw e-mailadres in ...")
 if st.button(":red[**Update df**]"):
        data = [{"Name": name, "e_mail": e_mail}]
        df_new = pd.DataFrame(data)
-       # conn.update(worksheet='old_data',data=df_old )
        df_updated = pd.concat([df_old,df_new],ignore_index=True)
-       conn.update(worksheet='new_data',data=df_updated)
+       conn.update(worksheet='Data',data=df_updated)
        st.rerun()
