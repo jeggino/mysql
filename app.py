@@ -38,8 +38,11 @@ type_bike = st.selectbox("Wat voor fiets wilt u repareren?", type_bikes)
 data = [{"Name": name, "e_mail": e_mail, "Phone number": number,"Neighborhood": buurt, "Expertise": expertise, "Type of bike": type_bike}]
 df_new = pd.DataFrame(data)
 
-if st.button(":red[**Update**]"):
+if st.button(":red[**Update df**]"):
        df_updated = pd.concat([df_old,df_new],ignore_index=True)
        conn.update(worksheet='Appointments',data=df_updated)
-       st.write("YOU update!!")
+       st.rerun()
+
+if st.button(":red[**Update row**]"):
+       conn.update(worksheet='Appointments',data=data)
        st.rerun()
