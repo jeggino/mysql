@@ -40,3 +40,13 @@ if st.button(":red[**Update df**]"):
        df_updated = pd.concat([df_old,df_new],ignore_index=True)
        conn.update(worksheet='Data',data=df_updated)
        st.rerun()
+
+if st.button(":red[**drop**]"):
+       name = st.text_input("Naam*", placeholder="Vul hier uw naam in ...")
+       df_drop = df_old[df_old['Name']!=name]
+       conn.update(worksheet='Data',data=df_drop)
+       
+       
+       
+       
+
