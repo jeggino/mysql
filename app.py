@@ -300,7 +300,7 @@ if not on:
             except:
                 df = df_old
                 df_filter = df
-                df_control = df[
+                df_control = df
                 len_1 = 0
                 len_control = 0
                    
