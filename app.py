@@ -7,8 +7,6 @@ import random
 from dateutil import parser
 
 
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_old = conn.read(ttl=0,worksheet="Data")
 
 
 # --- FUNCTIONS ---
@@ -29,35 +27,24 @@ def fun(dict_, date):
     for holiday_name, list_date in dict_.items():
         if date in list_date:
             return True, holiday_name
-#_________vakantie_______
+            
 
-
-# HORIZONTAL_RED = "images/horizontal_red.png"
-# ICON_RED = "images/icon_red.png"
-# HORIZONTAL_BLUE = "images/horizontal_blue.png"
-# ICON_BLUE = "images/icon_blue.png"
-
-# options = [HORIZONTAL_RED, ICON_RED, HORIZONTAL_BLUE, ICON_BLUE]
-# sidebar_logo = st.selectbox("Sidebar logo", options, 0)
-# main_body_logo = st.selectbox("Main body logo", options, 1)
-
-# --- SETTINGS ---
-# page_title = None
-# page_icon = " :bike: "  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-# layout = "centered"
+#--- SETTINGS ---
+page_title = None
+page_icon = " :bike: "  # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+layout = "centered"
 
 # --- HERE THE CHANGE WITH THE SHIFT, 14-16 HAS BEEN DELETED ---
 time_shift_choice_dinsdag_donderdag = ["18:00-20:30"]
 time_shift_choice_vrijdag = ["11:00-13:00","13:30-15:30","15:30-17:30"]
 time_shift_choice_cancel = ["11:00-13:00","13:30-15:30","15:30-17:30","18:00-20:30"]
 
-name_picture = f"{random.randint(1,1000000000000)}.jpeg"
-
+#---PAYMENT LINK---
 PAYMENT_LINK_STADPASS = "https://www.ing.nl/payreq/m/?trxid=E9z1j5CtPzvaEY6gsUDwLCtGfhPxHK7T"
 PAYMENT_LINK_NO_STADPASS = "https://www.ing.nl/payreq/m/?trxid=nT6szaulTjl68azo82hIuQ1FjeJOS4VR"
 
 
-#_________vakantie_______
+#---HOLIDAYS---
 holidays = {'Herfstvakantie' : pd.date_range(start="2024-10-26", end="2024-11-03"),
 'Kerstvakantie' : pd.date_range(start="2024-12-21", end="2025-01-05"),
 'Voorjaarsvakantie' : pd.date_range(start="2025-02-15", end="2025-02-23"),
@@ -79,11 +66,10 @@ for holiday in holidays.keys():
     hol_dict[holiday] = list_holidays
 
 hol_dict['Vrije dag'].append(DAY_OFF)
-#_________vakantie_______
 
 
 
-
+#---COSTANTS---
 buurt_choice = ['Bijlmer-West', 'Bijlmer-Centrum', 'Bijlmer-Oost', 'Bos en Lommer',
        'Oud-Zuid', 'Osdorp', 'Indische Buurt, Oostelijk Havengebied',
        'Centrum-West', 'Noord-West', 'Gaasperdam',
@@ -199,7 +185,7 @@ Welcome to the Cycling Clinic and enjoy your cycling session!
 
 
 
-# st.set_page_config(page_title=page_title, page_icon=page_icon, layout=layout)
+st.set_page_config(page_title=page_title, page_icon=page_icon, layout=layout)
 
 
 # --- HIDE STREAMLIT STYLE ---
@@ -213,6 +199,11 @@ hide_st_style = """
 
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
+#---LOAD DATASETS---
+conn = st.connection("gsheets", type=GSheetsConnection)
+df_old = conn.read(ttl=0,worksheet="Data")
+
+#--APP---
 on = st.toggle("🇬🇧")
 
 if not on:
@@ -220,7 +211,7 @@ if not on:
     selected = option_menu(
         menu_title=None,
         options=["Maak een afspraak", "Afspraak afzeggen"],
-        icons=["bi-journal-check", "bi-x-octagon-fill"],  # https://icons.getbootstrap.com/
+        icons=["bi-journal-check", "bi-x-octagon-fill"],
         orientation="horizontal",
     )
 
@@ -287,7 +278,6 @@ if not on:
         
         "---"
     
-        # find if there are available shift in that data      
         # submit the data
         submitted = st.button(":red[**Gegevens opslaan**]")
         if submitted:
@@ -423,16 +413,13 @@ else:
 
         
     # image = Image.open('292366152_369803905279628_8461882568456452789_n.jpg')
-    # st.image(image)
-        
-    # with right:
-    st.markdown(TEXT_english) 
+    # st.image(image) 
     
     "---"
     
     # --- INPUT & SAVE PERIODS ---
     if selected == "Make an appointment":       
-        
+        st.markdown(TEXT_english)     
         membership = st.radio("Payment", MEMBERSHIP_CHOICE_english, horizontal = False)
         if membership == "I have a City Pass":
             membership_number = st.text_input("", placeholder="Transfer city pass number ...",label_visibility="collapsed")
@@ -445,7 +432,7 @@ else:
         day = date.strftime("%A")
         week = date.isocalendar()[1]
 
-                #_________vakantie_______
+        #_________vakantie_______
         res_holiday = fun(hol_dict, str(date))
 
         try:
@@ -471,16 +458,6 @@ else:
         buurt = st.selectbox("What neighborhood are you from? (for statistics purposes)", buurt_choice)
         expertise = st.selectbox("What experience do you have with cycling?", expertise_choice_english )
         type_bike = st.selectbox("What kind of bicycle do you want to repair?", type_bikes_english)
-        if type_bike in ["Cargo bike - Please send a photo","E-bike - Please send a photo","my bike is not listed"]:
-            picture = st.file_uploader("Upload a photo")
-            
-            if picture:
-                st.image(picture,width = 300)
-                
-            if not picture:
-                st.warning("Upload a photo of your bike")
-                st.stop()  
-                
         materiaal = st.multiselect("Repair to be done (More options possible)", materiaal_choice_english)
         opmerking = st.text_input("", placeholder="Send a message, question, etc. ...",label_visibility="collapsed")
         
@@ -574,7 +551,7 @@ else:
     
             
                
-    ##### --- drop appointment ---
+    #--- drop appointment ---
     if selected == "Cancel appointment":
         with st.form("cancel_form", clear_on_submit=False):
     
