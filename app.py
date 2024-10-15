@@ -410,201 +410,195 @@ if not on:
                     st.warning('schrijf alstublieft uw e-mail', icon="⚠️")
 
 
-# else:    
+else:    
 
-    # # --- NAVIGATION MENU ---
-    # selected = option_menu(
-    #     menu_title=None,
-    #     options=["Make an appointment", "Cancel appointment"],
-    #     icons=["bi-journal-check", "bi-x-octagon-fill"],  # https://icons.getbootstrap.com/
-    #     orientation="horizontal",
-    # )
+    # --- NAVIGATION MENU ---
+    selected = option_menu(
+        menu_title=None,
+        options=["Make an appointment", "Cancel appointment"],
+        icons=["bi-journal-check", "bi-x-octagon-fill"],  # https://icons.getbootstrap.com/
+        orientation="horizontal",
+    )
 
 
         
-    # # image = Image.open('292366152_369803905279628_8461882568456452789_n.jpg')
-    # # st.image(image)
+    # image = Image.open('292366152_369803905279628_8461882568456452789_n.jpg')
+    # st.image(image)
         
-    # # with right:
-    # st.markdown(TEXT_english) 
+    # with right:
+    st.markdown(TEXT_english) 
     
-    # "---"
+    "---"
     
-    # # --- INPUT & SAVE PERIODS ---
-    # if selected == "Make an appointment":       
+    # --- INPUT & SAVE PERIODS ---
+    if selected == "Make an appointment":       
         
-    #     membership = st.radio("Payment", MEMBERSHIP_CHOICE_english, horizontal = False)
-    #     if membership == "I have a City Pass":
-    #         membership_number = st.text_input("", placeholder="Transfer city pass number ...",label_visibility="collapsed")
+        membership = st.radio("Payment", MEMBERSHIP_CHOICE_english, horizontal = False)
+        if membership == "I have a City Pass":
+            membership_number = st.text_input("", placeholder="Transfer city pass number ...",label_visibility="collapsed")
             
-    #         if  len(membership_number) == 0:
-    #             st.warning("Please enter the City Pass number")
-    #             st.stop()
+            if  len(membership_number) == 0:
+                st.warning("Please enter the City Pass number")
+                st.stop()
     
-    #     date = st.date_input("Date (Tuesday, Thursday, or Friday only)")
-    #     day = date.strftime("%A")
-    #     week = date.isocalendar()[1]
+        date = st.date_input("Date (Tuesday, Thursday, or Friday only)")
+        day = date.strftime("%A")
+        week = date.isocalendar()[1]
 
-    #             #_________vakantie_______
-    #     res_holiday = fun(hol_dict, str(date))
+                #_________vakantie_______
+        res_holiday = fun(hol_dict, str(date))
 
-    #     try:
-    #         if res_holiday[0]==True:
-    #             st.warning(f"It's {res_holiday[1]}! Sorry, the Fietskliniek is closed.")
-    #             st.stop()
-    #     except:
-    #         pass
-    #     #_________vakantie_______
+        try:
+            if res_holiday[0]==True:
+                st.warning(f"It's {res_holiday[1]}! Sorry, the Fietskliniek is closed.")
+                st.stop()
+        except:
+            pass
+        #_________vakantie_______
         
-    #     if day not in ["Tuesday","Thursday","Friday"]:
-    #         st.warning("You can only make an appointment on Tuesday, Thursday or Friday")
-    #         st.stop()
+        if day not in ["Tuesday","Thursday","Friday"]:
+            st.warning("You can only make an appointment on Tuesday, Thursday or Friday")
+            st.stop()
             
-    #     if day=="Friday":
-    #         time_shift = st.radio("Time shift", time_shift_choice_vrijdag, horizontal = True)
-    #     else:
-    #         time_shift = st.radio("Time shift", time_shift_choice_dinsdag_donderdag, horizontal = True)
+        if day=="Friday":
+            time_shift = st.radio("Time shift", time_shift_choice_vrijdag, horizontal = True)
+        else:
+            time_shift = st.radio("Time shift", time_shift_choice_dinsdag_donderdag, horizontal = True)
             
-    #     name = st.text_input("Name*", placeholder="Enter your name here ...")
-    #     e_mail = st.text_input("E-mail*", placeholder="Enter your email address here ...")
-    #     number = st.text_input("Phone number*", placeholder="Enter your number here ...")
-    #     buurt = st.selectbox("What neighborhood are you from? (for statistics purposes)", buurt_choice)
-    #     expertise = st.selectbox("What experience do you have with cycling?", expertise_choice_english )
-    #     type_bike = st.selectbox("What kind of bicycle do you want to repair?", type_bikes_english)
-    #     if type_bike in ["Cargo bike - Please send a photo","E-bike - Please send a photo","my bike is not listed"]:
-    #         picture = st.file_uploader("Upload a photo")
+        name = st.text_input("Name*", placeholder="Enter your name here ...")
+        e_mail = st.text_input("E-mail*", placeholder="Enter your email address here ...")
+        number = st.text_input("Phone number*", placeholder="Enter your number here ...")
+        buurt = st.selectbox("What neighborhood are you from? (for statistics purposes)", buurt_choice)
+        expertise = st.selectbox("What experience do you have with cycling?", expertise_choice_english )
+        type_bike = st.selectbox("What kind of bicycle do you want to repair?", type_bikes_english)
+        if type_bike in ["Cargo bike - Please send a photo","E-bike - Please send a photo","my bike is not listed"]:
+            picture = st.file_uploader("Upload a photo")
             
-    #         if picture:
-    #             st.image(picture,width = 300)
+            if picture:
+                st.image(picture,width = 300)
                 
-    #         if not picture:
-    #             st.warning("Upload a photo of your bike")
-    #             st.stop()  
+            if not picture:
+                st.warning("Upload a photo of your bike")
+                st.stop()  
                 
-    #     materiaal = st.multiselect("Repair to be done (More options possible)", materiaal_choice_english)
-    #     opmerking = st.text_input("", placeholder="Send a message, question, etc. ...",label_visibility="collapsed")
+        materiaal = st.multiselect("Repair to be done (More options possible)", materiaal_choice_english)
+        opmerking = st.text_input("", placeholder="Send a message, question, etc. ...",label_visibility="collapsed")
         
-    #     """_*Required fields_"""
-    #     """:orange-background[_personal data is not stored, only used for administrative purposes of the appointment made_]"""
+        """_*Required fields_"""
+        """:orange-background[_personal data is not stored, only used for administrative purposes of the appointment made_]"""
         
-    #     "---"
+        "---"
     
-    #     # find if there are available shift in that data
-    #     db_content = db.fetch().items
-    #     df = pd.DataFrame(db_content)
-    #     df_filter = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift)]
-    #     df_control = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift) & (df["Name"]==name)]
-    #     len_1 = len(df_filter)
-    #     len_control = len(df_control)       
+        # find if there are available shift in that data
+        df = df_old
+        df_filter = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift)]
+        df_control = df[(df["Date"]==str(date)) & (df["Time shift"]==time_shift) & (df["Name"]==name)]
+        len_1 = len(df_filter)
+        len_control = len(df_control)       
     
-    #     # submit the data
-    #     submitted = st.button(":red[**Save data**]")
-    #     if submitted:
+        # submit the data
+        submitted = st.button(":red[**Save data**]")
+        if submitted:
     
-    #         if len(name) == 0 or len(e_mail)==0 or len(number)==0:
-    #             st.warning('Please fill in the required fields', icon="⚠️")
-    #             st.stop()
+            if len(name) == 0 or len(e_mail)==0 or len(number)==0:
+                st.warning('Please fill in the required fields', icon="⚠️")
+                st.stop()
                 
-    #         if len_control == 0:
-    #             res = ((dt.strptime(str(date), "%Y-%m-%d").date() - dt.today().date()).days)
-    #             if res == 0: 
-    #                 st.warning('Unfortunately, you cannot book an appointment on the same day', icon="⚠️")
-    #                 st.stop()
-    #             else:
-    #                 day = parser.parse(str(date)).strftime("%A")
-    #                 try:
-    #                     int(number)
-    #                     if day in ["Thursday","Tuesday"]:
+            if len_control == 0:
+                res = ((dt.strptime(str(date), "%Y-%m-%d").date() - dt.today().date()).days)
+                if res == 0: 
+                    st.warning('Unfortunately, you cannot book an appointment on the same day', icon="⚠️")
+                    st.stop()
+                else:
+                    day = parser.parse(str(date)).strftime("%A")
+                    try:
+                        int(number)
+                        if day in ["Thursday","Tuesday"]:
         
-    #                         if time_shift=="18:00-20:30" and len_1 >= 3:
-    #                             st.warning('This time shift is already full. Choose another one', icon="⚠️")
+                            if time_shift=="18:00-20:30" and len_1 >= 3:
+                                st.warning('This time shift is already full. Choose another one', icon="⚠️")
         
-    #                         else:
-    #                             try:
-    #                                 bytes_data = picture.getvalue()
-    #                                 drive.put(name_picture, data=bytes_data)
-    #                                 if membership == "I have a City Pass":
-    #                                     insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
-    #                                     st.markdown(PAYMENT_LINK_STADPASS)
-    #                                 else:
-    #                                     insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
-    #                                     st.markdown(PAYMENT_LINK_NO_STADPASS)
-    #                             except:
-    #                                 if membership == "I have a City Pass":
-    #                                     insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
-    #                                     st.markdown(PAYMENT_LINK_STADPASS)
-    #                                 else:
-    #                                     insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
-    #                                     st.markdown(PAYMENT_LINK_NO_STADPASS)
-    #                             st.success("🚲🚲 You have booked an appointment! 🚲🚲")
-    #                             st.warning("When making an appointment, payement has to be done to secure your reservation")
+                            else:
+                                try:
+                                    bytes_data = picture.getvalue()
+                                    drive.put(name_picture, data=bytes_data)
+                                    if membership == "I have a City Pass":
+                                        insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
+                                        st.markdown(PAYMENT_LINK_STADPASS)
+                                    else:
+                                        insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
+                                        st.markdown(PAYMENT_LINK_NO_STADPASS)
+                                except:
+                                    if membership == "I have a City Pass":
+                                        insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
+                                        st.markdown(PAYMENT_LINK_STADPASS)
+                                    else:
+                                        insert_period(name_picture,membership,  str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
+                                        st.markdown(PAYMENT_LINK_NO_STADPASS)
+                                st.success("🚲🚲 You have booked an appointment! 🚲🚲")
+                                st.warning("When making an appointment, payement has to be done to secure your reservation")
                     
         
-    #                     elif day == "Friday":
+                        elif day == "Friday":
         
-    #                         if time_shift=="11:00-13:00" and len_1 >= 1:
-    #                             st.warning('Deze tijdsverschuiving is al vol. Kies een andere', icon="⚠️")
+                            if time_shift=="11:00-13:00" and len_1 >= 1:
+                                st.warning('Deze tijdsverschuiving is al vol. Kies een andere', icon="⚠️")
         
-    #                         elif time_shift=="13:30-15:30" and len_1 >= 1:
-    #                             st.warning('Deze tijdsverschuiving is al vol. Kies een andere', icon="⚠️")
+                            elif time_shift=="13:30-15:30" and len_1 >= 1:
+                                st.warning('Deze tijdsverschuiving is al vol. Kies een andere', icon="⚠️")
         
-    #                         elif time_shift=="15:30-17:30" and len_1 >= 1:
-    #                             st.warning('Deze tijdsverschuiving is al vol. Kies een andere', icon="⚠️")
+                            elif time_shift=="15:30-17:30" and len_1 >= 1:
+                                st.warning('Deze tijdsverschuiving is al vol. Kies een andere', icon="⚠️")
         
-    #                         else:
-    #                             try:
-    #                                 bytes_data = picture.getvalue()
-    #                                 drive.put(name_picture, data=bytes_data)
-    #                                 if membership == "I have a City Pass":
-    #                                     insert_period(name_picture,membership,str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
-    #                                     st.markdown(PAYMENT_LINK_STADPASS)
-    #                                 else:
-    #                                     insert_period(name_picture,membership,str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
-    #                                     st.markdown(PAYMENT_LINK_NO_STADPASS)
-    #                             except:
-    #                                 if membership == "I have a City Pass":
-    #                                     insert_period(name_picture, membership, str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
-    #                                     st.markdown(PAYMENT_LINK_STADPASS)
-    #                                 else:
-    #                                     insert_period(name_picture, membership, str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
-    #                                     st.markdown(PAYMENT_LINK_NO_STADPASS)
-    #                             st.success("🚲🚲 You have booked an appointment! 🚲🚲")
-    #                             st.warning("When making an appointment, payement has to be done to secure your reservation")
-    #                 except:
-    #                     st.error("Please enter a correct phone number")
+                            else:
+                                try:
+                                    bytes_data = picture.getvalue()
+                                    drive.put(name_picture, data=bytes_data)
+                                    if membership == "I have a City Pass":
+                                        insert_period(name_picture,membership,str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
+                                        st.markdown(PAYMENT_LINK_STADPASS)
+                                    else:
+                                        insert_period(name_picture,membership,str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
+                                        st.markdown(PAYMENT_LINK_NO_STADPASS)
+                                except:
+                                    if membership == "I have a City Pass":
+                                        insert_period(name_picture, membership, str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking,membership_number)
+                                        st.markdown(PAYMENT_LINK_STADPASS)
+                                    else:
+                                        insert_period(name_picture, membership, str(date), day, week, time_shift, name, e_mail, number, buurt, expertise, type_bike, materiaal, opmerking)
+                                        st.markdown(PAYMENT_LINK_NO_STADPASS)
+                                st.success("🚲🚲 You have booked an appointment! 🚲🚲")
+                                st.warning("When making an appointment, payement has to be done to secure your reservation")
+                    except:
+                        st.error("Please enter a correct phone number")
     
-    #         else:
-    #             st.warning('There is already an appointment on this date and time with the same name', icon="⚠️") 
+            else:
+                st.warning('There is already an appointment on this date and time with the same name', icon="⚠️") 
     
             
                
-    # ##### --- drop appointment ---
-    # if selected == "Cancel appointment":
-    #     with st.form("cancel_form", clear_on_submit=False):
+    ##### --- drop appointment ---
+    if selected == "Cancel appointment":
+        with st.form("cancel_form", clear_on_submit=False):
     
-    #         date = str(st.date_input("Date"))
-    #         time_shift = st.selectbox("Time shift", time_shift_choice_cancel )
-    #         e_mail = st.text_input("", placeholder="Enter your email address here ...")
+            date = str(st.date_input("Date"))
+            time_shift = st.selectbox("Time shift", time_shift_choice_cancel )
+            e_mail = st.text_input("", placeholder="Enter your email address here ...")
             
-    #         "---"
+            "---"
             
-    #         db_content = db.fetch().items
-    #         df = pd.DataFrame(db_content)
-    #         df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
-    #         submitted = st.form_submit_button("Cancel appointment")
-    #         if submitted:
-    #             if e_mail:
-    #                 if len(df_filter) > 0:
-    #                     key = df_filter["key"].values[0]       
-    #                     db.delete(key)
-    #                     st.success("Your appointment has been cancelled!") 
-    #                 else:
-    #                     st.warning('There is no appointment at this email address', icon="⚠️")
+            submitted = st.form_submit_button("Cancel appointment")
+            if submitted:
+                df = conn.read(ttl=0,worksheet="Data")
+                df_filter = df[(df["Date"]==date) & (df["Time shift"]==time_shift) & (df.e_mail==e_mail)]
+                df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+                if e_mail:
+                    if len(df_filter) > 0:
+                        conn.update(worksheet='Data',data=df_drop)
+                        st.success("Your appointment has been cancelled!") 
+                        st.rerun()
+                    else:
+                        st.warning('There is no appointment at this email address', icon="⚠️")
     
-    #             else:
-    #                 st.warning('Please write your email', icon="⚠️")
-       
-       
-       
-       
-
+                else:
+                    st.warning('Please write your email', icon="⚠️")   
